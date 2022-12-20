@@ -1488,7 +1488,51 @@ def carotenoids(ko_match):
 
 	return out_data
 
-
+# Porphyran routine
+def beta_agarase(ko_match):
+	out_data = {'beta-agarase':0}
+	if 'K01219' in ko_match:
+		out_data['beta-agarase'] += 1
+	return out_data
+def beta_porphyranase(ko_match):
+	out_data = {'beta-porphyranase':0}
+	if 'K20830' in ko_match:
+		out_data['beta-porphyranase'] += 1
+	return out_data
+def glycosidases(ko_match):
+	out_data = {'glycosidases':0}
+	glycosidases = ['K01209', 'K06113', 'K01190', 'K15532', 'K01206', 'K20830', 'K12111']
+	for i in glycosidases:
+		if i in ko_match:
+			out_data['glycosidases'] += 0.142
+	return out_data
+def SusC_like_proteins(ko_match):
+	out_data = {'susc': 0}
+	if 'K21572' in ko_match:
+		out_data['susc'] += 1
+	return out_data
+def SusD_like_proteins(ko_match):
+	out_data = {'susd': 0}
+	if 'K21573' in ko_match:
+		out_data['susd'] += 1
+	return out_data
+def sulfatase(ko_match):
+	out_data = {'sulfatase':0}
+	if 'K01206' in ko_match:
+		out_data['sulfatase'] += 1
+	return out_data
+def RteA(ko_match):
+	out_data = {'RteA':0}
+	if 'K02481' in ko_match:
+		out_data['RteA'] += 1
+	return out_data
+def RteB(ko_match):
+	out_data = {'RteB': 0}
+	RteB = ['K07679', 'K20974']
+	for i in RteB:
+		if i in ko_match:
+			out_data['RteB'] += 0.5
+	return out_data
 
 def default_viz(genome_df, outfile_name):
 	import seaborn as sns
@@ -1544,6 +1588,8 @@ def main():
 				genome_data[info[0].split("_")[0]].append(info[1])
 			else:
 				genome_data[info[0].split("_")[0]] = [info[1]]
+
+	function_order1 = ['beta-agarase', 'beta-porphyranases', 'glycosidases', 'SusC-like-proteins', 'SusD-like-proteins', 'Sulfatase', 'HTCS-sensor/regulator', 'RteA', 'RteB']
 
 	function_order = ['glycolysis', 'gluconeogenesis', 'TCA Cycle',
 	'NAD(P)H-quinone oxidoreductase', 'NADH-quinone oxidoreductase',
@@ -1628,50 +1674,58 @@ def main():
 
 	filehandle = str(arg_dict['output'])
 	out_file = open(filehandle, "w")
-	out_file.write('Function'+"\t"+str("\t".join(function_order))+"\n")
+	out_file.write('Function'+"\t"+str("\t".join(function_order1))+"\n")
 
 	for k in genome_data:
 		pathway_data = {}
-		pathway_data.update(nitrogen(genome_data[k]))
-		pathway_data.update(glycolysis(genome_data[k]))
-		pathway_data.update(gluconeogenesis(genome_data[k]))
-		pathway_data.update(tca_cycle(genome_data[k]))
-		pathway_data.update(cbb_cycle(genome_data[k]))
-		pathway_data.update(reverse_tca(genome_data[k]))
-		pathway_data.update(wood_ljungdahl(genome_data[k]))
-		pathway_data.update(three_prop(genome_data[k]))
-		pathway_data.update(four_hydrox(genome_data[k]))
-		pathway_data.update(c_degradation(genome_data[k]))
-		pathway_data.update(chemotaxis(genome_data[k]))
-		pathway_data.update(flagellum(genome_data[k]))
-		pathway_data.update(sulfur(genome_data[k]))
-		pathway_data.update(methanogenesis(genome_data[k]))
-		pathway_data.update(methane_ox(genome_data[k]))
-		pathway_data.update(hydrogen(genome_data[k]))
-		pathway_data.update(transporters(genome_data[k]))
-		pathway_data.update(riboflavin(genome_data[k]))
-		pathway_data.update(thiamin(genome_data[k]))
-		pathway_data.update(oxidative_phoshorylation(genome_data[k]))
-	#Addendum 2
-		pathway_data.update(photosynthesis(genome_data[k]))
-		pathway_data.update(entnerdoudoroff(genome_data[k]))
-		pathway_data.update(mixedacid(genome_data[k]))
-		pathway_data.update(naphthalene(genome_data[k]))
-		pathway_data.update(biofilm(genome_data[k]))
-		pathway_data.update(cobalamin(genome_data[k]))
-		pathway_data.update(competence(genome_data[k]))
-		pathway_data.update(anaplerotic(genome_data[k]))
-		pathway_data.update(sulfolipid(genome_data[k]))
-		pathway_data.update(cplyase(genome_data[k]))
-		pathway_data.update(secretion(genome_data[k]))
-		pathway_data.update(serine(genome_data[k]))
-		pathway_data.update(arsenic(genome_data[k]))
-		pathway_data.update(metal_transport(genome_data[k]))
-		pathway_data.update(amino_acids(genome_data[k]))
-		pathway_data.update(plastic(genome_data[k]))
-		pathway_data.update(carbon_storage(genome_data[k]))
-		pathway_data.update(phosphate_storage(genome_data[k]))
-		pathway_data.update(carotenoids(genome_data[k]))
+		pathway_data.update(beta_agarase(genome_data[k]))
+		pathway_data.update(beta_porphyranase(genome_data[k]))
+		pathway_data.update(glycosidases(genome_data[k]))
+		pathway_data.update(SusC_like_proteins(genome_data[k]))
+		pathway_data.update(SusD_like_proteins(genome_data[k]))
+		pathway_data.update(sulfatase(genome_data[k]))
+		pathway_data.update(RteA(genome_data[k]))
+		pathway_data.update(RteB(genome_data[k]))
+	# 	pathway_data.update(nitrogen(genome_data[k]))
+	# 	pathway_data.update(glycolysis(genome_data[k]))
+	# 	pathway_data.update(gluconeogenesis(genome_data[k]))
+	# 	pathway_data.update(tca_cycle(genome_data[k]))
+	# 	pathway_data.update(cbb_cycle(genome_data[k]))
+	# 	pathway_data.update(reverse_tca(genome_data[k]))
+	# 	pathway_data.update(wood_ljungdahl(genome_data[k]))
+	# 	pathway_data.update(three_prop(genome_data[k]))
+	# 	pathway_data.update(four_hydrox(genome_data[k]))
+	# 	pathway_data.update(c_degradation(genome_data[k]))
+	# 	pathway_data.update(chemotaxis(genome_data[k]))
+	# 	pathway_data.update(flagellum(genome_data[k]))
+	# 	pathway_data.update(sulfur(genome_data[k]))
+	# 	pathway_data.update(methanogenesis(genome_data[k]))
+	# 	pathway_data.update(methane_ox(genome_data[k]))
+	# 	pathway_data.update(hydrogen(genome_data[k]))
+	# 	pathway_data.update(transporters(genome_data[k]))
+	# 	pathway_data.update(riboflavin(genome_data[k]))
+	# 	pathway_data.update(thiamin(genome_data[k]))
+	# 	pathway_data.update(oxidative_phoshorylation(genome_data[k]))
+	# #Addendum 2
+	# 	pathway_data.update(photosynthesis(genome_data[k]))
+	# 	pathway_data.update(entnerdoudoroff(genome_data[k]))
+	# 	pathway_data.update(mixedacid(genome_data[k]))
+	# 	pathway_data.update(naphthalene(genome_data[k]))
+	# 	pathway_data.update(biofilm(genome_data[k]))
+	# 	pathway_data.update(cobalamin(genome_data[k]))
+	# 	pathway_data.update(competence(genome_data[k]))
+	# 	pathway_data.update(anaplerotic(genome_data[k]))
+	# 	pathway_data.update(sulfolipid(genome_data[k]))
+	# 	pathway_data.update(cplyase(genome_data[k]))
+	# 	pathway_data.update(secretion(genome_data[k]))
+	# 	pathway_data.update(serine(genome_data[k]))
+	# 	pathway_data.update(arsenic(genome_data[k]))
+	# 	pathway_data.update(metal_transport(genome_data[k]))
+	# 	pathway_data.update(amino_acids(genome_data[k]))
+	# 	pathway_data.update(plastic(genome_data[k]))
+	# 	pathway_data.update(carbon_storage(genome_data[k]))
+	# 	pathway_data.update(phosphate_storage(genome_data[k]))
+	# 	pathway_data.update(carotenoids(genome_data[k]))
 	#    print k, pathway_data
 
 		out_string = str(k)+"\t"
