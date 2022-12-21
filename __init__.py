@@ -4,5 +4,4 @@ the completeness of various KEGG pathways
 """
 
 
-__version__ = "1.3"
-
+__version__ = "1.3-modified"

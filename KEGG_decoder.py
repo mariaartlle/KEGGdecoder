@@ -4,13 +4,13 @@
 KEGG-decoder.py V.1.3
 V.1.3
 Added several pathways associated with carotenoid biosynthesis, including
-end-products: astaxanthin, nostoxanthin, zeaxanthin diglucoside, & 
+end-products: astaxanthin, nostoxanthin, zeaxanthin diglucoside, &
 myxoxanthophylls. Plus, staphyloaxanthin biosynthesis and the two pathways for
 terpenoid building blocks, the mevalonate pathway and the MEP/DOXP pathway.
 The pathways were provided by Dr. Tania Kurbessoian
 V.1.2.1
 Fixed typo in determing reverse TCA cycle as identified by KEGG-Decoder
-user Cheng. Added all-trans-8'-apo-beta-carotenal 15,15'-oxygenase 
+user Cheng. Added all-trans-8'-apo-beta-carotenal 15,15'-oxygenase
 which will cleave apo-carotenals to generate retinal. Suggested by Eric Webb.
 Upstream pathway unknown
 V.1.2
@@ -22,9 +22,9 @@ V.1.1
 Correcting typos identified by Chris Neely. Adding more complete
 pathways components for amino acid biosynthesis identified by
 Dr. Eric Webb
-phenylalanine added K01713 pheC; cyclohexadienyl dehydratase OR K05359 ADT; 
+phenylalanine added K01713 pheC; cyclohexadienyl dehydratase OR K05359 ADT;
 arogenate/prephenate dehydratase OR K04518 pheA2; prephenate dehydratase
-tyrosine added K00220 tyrC; cyclohexadieny/prephenate dehydrogenase OR 
+tyrosine added K00220 tyrC; cyclohexadieny/prephenate dehydrogenase OR
 K24018; cyclohexadieny/prephenate dehydrogenase OR K15226 tyrAa; arogenate dehydrogenase
 V.1.0.10
 Add the biosynthesis of the 20 amino acids - represented as the last
@@ -32,7 +32,7 @@ step in the pathway
 KEGG-decoder.py V.1.0.8.2
 V.1.0.8
 Several recent updates have improved all three outputs for visualization
-expanded further in the ReadMe note. Additionally, a correction to 
+expanded further in the ReadMe note. Additionally, a correction to
 determining the completeness of ubiquinol-cytochrome c reductase. Previously,
 only checked for the presence of K00411 and K00410. K00410 is a fusion of
 K00412 and K00413 only present in a subset of Proteobacteria. Identified
@@ -61,9 +61,9 @@ for sulfolipid biosynthesis (key gene sqdB) and C-P lyase
 V.0.4 Adds sections that more accurately represents anoxygenic photosynthesis
 - type-II and type-I reaction centers, adds NiFe hydrogenase Hyd-1 hyaABC,
 corrected typo leading to missed assignment to hydrogen:quinone oxidoreductase
-V.0.3. Adds retinal biosynthesis, sulfite dehydrogenase (quinone), 
-hydrazine dehydrogenase, hydrazine synthase, DMSP/DMS/DMSO cycling, 
-cobalamin biosynthesis, competence-related DNA transport, anaplerotic 
+V.0.3. Adds retinal biosynthesis, sulfite dehydrogenase (quinone),
+hydrazine dehydrogenase, hydrazine synthase, DMSP/DMS/DMSO cycling,
+cobalamin biosynthesis, competence-related DNA transport, anaplerotic
 reactions
 Usage: python KEGG-decoder.py <KOALA INPUT> <FUNCTION LIST FORMAT>
 
@@ -157,7 +157,7 @@ def glycolysis(ko_match):
 #glyceraldehyde 3-phosphate dehydrogenase
 	if ('K00134' in ko_match or 'K00150' in ko_match):
 		total += 1
-#2,3-bisphosphoglycerate-dependent phosphoglycerate mutase 
+#2,3-bisphosphoglycerate-dependent phosphoglycerate mutase
 	if ('K01834' in ko_match or 'K15633' in ko_match):
 		total += 1
 #pyruvate kinase
@@ -205,7 +205,7 @@ def tca_cycle(ko_match):
 		('K01902' in ko_match and 'K01903' in ko_match) or
 		('K18118' in ko_match)):
 		total += 1
-#fumarate reductase 
+#fumarate reductase
 	if (('K00244' in ko_match and 'K00245' in ko_match and 'K00246' in ko_match and 'K00247' in ko_match)
 		or
 		('K00239' in ko_match and 'K00240' in ko_match and 'K00241' in ko_match and 'K00242' in ko_match)
@@ -239,10 +239,10 @@ def cbb_cycle(ko_match):
 #phosphoglycerate kinase
 		if ('K00927' in ko_match):
 			total += 1
-#glyceraldehyde 3-phosphate dehydrogenase 
+#glyceraldehyde 3-phosphate dehydrogenase
 		if ('K00134' in ko_match) or ('K05298' in ko_match) or ('K00150' in ko_match):
 			total += 1
-#phosphoribulokinase            
+#phosphoribulokinase
 		if ('K00855' in ko_match):
 			total += 1
 #Ribulose regeneration
@@ -282,7 +282,7 @@ def wood_ljungdahl(ko_match):
 	total = 0
 	CO_methyl_present = 0
 #Carbon fixing branch
-#acetyl-CoA decarbonylase/synthase complex subunit alpha OR 
+#acetyl-CoA decarbonylase/synthase complex subunit alpha OR
 #CO-methylating acetyl-CoA synthase
 	if ('K00192' in ko_match) or ('K14138' in ko_match):
 		total += 1
@@ -332,7 +332,7 @@ def three_prop(ko_match):
 	if ('K02160' in ko_match and 'K01961' in ko_match and
 		'K01962' in ko_match and 'K01963' in ko_match):
 		total +=1
-#malonyl-CoA reductase / 3-hydroxypropionate dehydrogenase (NADP+) 
+#malonyl-CoA reductase / 3-hydroxypropionate dehydrogenase (NADP+)
 	if ('K14468' in ko_match and 'K15017' in ko_match):
 		total +=1
 #3-hydroxypropionate dehydrogenase (NADP+)
@@ -353,7 +353,7 @@ def three_prop(ko_match):
 #2-methylfumaryl-CoA hydratase
 	if ('K14449' in ko_match):
 		total +=1
-#2-methylfumaryl-CoA isomerase 
+#2-methylfumaryl-CoA isomerase
 	if ('K14470' in ko_match):
 		total +=1
 #3-methylfumaryl-CoA hydratase
@@ -510,7 +510,7 @@ def sulfur(ko_match):
 #tsdA thiosulfate dehydrogenase [EC:1.8.2.2]
 	if ('K19713' in ko_match):
 		out_data['alt thiosulfate oxidation tsdA'] = 1
-#sulfur reductase 
+#sulfur reductase
 	if ('K17219' in ko_match):
 		out_data['sulfur reductase sreABC'] += .33
 	if ('K17220' in ko_match):
@@ -547,7 +547,7 @@ def sulfur(ko_match):
 		out_data['sulfide oxidation'] = 1
 	value = out_data['thiosulfate oxidation']
 	out_data['thiosulfate oxidation'] = float("%.2f" % (value))
-#soeABC; sulfite dehydrogenase (quinone) 
+#soeABC; sulfite dehydrogenase (quinone)
 	soeABC = ['K21307', 'K21308', 'K21309']
 	for i in soeABC:
 		if i in ko_match:
@@ -722,11 +722,11 @@ def transporters(ko_match):
 
 def riboflavin(ko_match):
 	total= 0
-#ribB; 3,4-dihydroxy 2-butanone 4-phosphate synthase OR 
+#ribB; 3,4-dihydroxy 2-butanone 4-phosphate synthase OR
 #ribAB; 3,4-dihydroxy 2-butanone 4-phosphate synthase / GTP cyclohydrolase II
 	if ('K02858' in ko_match or 'K14652' in ko_match):
 		total += 1
-#ribD2; 5-amino-6-(5-phosphoribosylamino)uracil reductase OR 
+#ribD2; 5-amino-6-(5-phosphoribosylamino)uracil reductase OR
 #ribD; diaminohydroxyphosphoribosylaminopyrimidine deaminase / 5-amino-6-(5-phosphoribosylamino)uracil reductase
 	if ('K00082' in ko_match or 'K11752' in ko_match):
 		total += 1
@@ -736,7 +736,7 @@ def riboflavin(ko_match):
 #ribE; riboflavin synthase
 	if ('K00793' in ko_match):
 		total += 1
-#RFK; riboflavin kinase OR FHY; riboflavin kinase / FMN hydrolase OR 
+#RFK; riboflavin kinase OR FHY; riboflavin kinase / FMN hydrolase OR
 #ribF; riboflavin kinase / FMN adenylyltransferase
 #    if ('K00861' in ko_match or 'K20884' in ko_match or 'K11753' in ko_match):
 #        total += 1
@@ -769,19 +769,19 @@ def thiamin(ko_match):
 #tenI; thiazole tautomerase OR THI4; thiamine thiazole synthase
 	if ('K10810' in ko_match or 'K03146' in ko_match):
 		total += 1
-#THI5; pyrimidine precursor biosynthesis enzyme OR K03147 thiC; phosphomethylpyrimidine synthase OR 
-#THI20; hydroxymethylpyrimidine/phosphomethylpyrimidine kinase / thiaminase OR 
-#thiD; hydroxymethylpyrimidine/phosphomethylpyrimidine kinase OR 
+#THI5; pyrimidine precursor biosynthesis enzyme OR K03147 thiC; phosphomethylpyrimidine synthase OR
+#THI20; hydroxymethylpyrimidine/phosphomethylpyrimidine kinase / thiaminase OR
+#thiD; hydroxymethylpyrimidine/phosphomethylpyrimidine kinase OR
 #thiDE; hydroxymethylpyrimidine kinase / phosphomethylpyrimidine kinase / thiamine-phosphate diphosphorylase
 	if ('K18278' in ko_match or 'K03147' in ko_match or
 		'K00877' in ko_match or 'K00941' in ko_match):
 		total += 1
-#THI20; hydroxymethylpyrimidine/phosphomethylpyrimidine kinase / thiaminase OR 
+#THI20; hydroxymethylpyrimidine/phosphomethylpyrimidine kinase / thiaminase OR
 #thiD; hydroxymethylpyrimidine/phosphomethylpyrimidine kinase
 	if ('K00877' in ko_match or 'K00941' in ko_match):
 		total += 1
-#thiE; thiamine-phosphate pyrophosphorylase OR 
-#thiDE; hydroxymethylpyrimidine kinase / phosphomethylpyrimidine kinase / thiamine-phosphate diphosphorylase OR 
+#thiE; thiamine-phosphate pyrophosphorylase OR
+#thiDE; hydroxymethylpyrimidine kinase / phosphomethylpyrimidine kinase / thiamine-phosphate diphosphorylase OR
 #THI6;thiamine-phosphate diphosphorylase / hydroxyethylthiazole kinase
 	if ('K00788' in ko_match or 'K14153' in ko_match or
 		'K14154' in ko_match):
@@ -888,7 +888,7 @@ def oxidative_phoshorylation(ko_match):
 	for i in aa3_ko:
 		if i in ko_match:
 			out_data['Cytochrome aa3-600 menaquinol oxidase'] += 0.25
-#petA,fbcH; ubiquinol-cytochrome c reductase 
+#petA,fbcH; ubiquinol-cytochrome c reductase
 #petA,petB,petC; ubiquinol-cytochrome c reductase
 	if ('K00411' in ko_match) and ('K00410' in ko_match):
 		out_data['Ubiquinol-cytochrome c reductase'] = 1
@@ -897,7 +897,7 @@ def oxidative_phoshorylation(ko_match):
 		for i in ubiquinol_ko:
 			if i in ko_match:
 				out_data['Ubiquinol-cytochrome c reductase'] += 0.33
-	
+
 #nqrABCDEF; Na+-transporting NADH:ubiquinone oxidoreductase
 	na_ubiquinone_ko = ['K00346', 'K00347', 'K00348', 'K00349',
 	'K00350', 'K00351']
@@ -906,7 +906,7 @@ def oxidative_phoshorylation(ko_match):
 			out_data['Na-NADH-ubiquinone oxidoreductase'] += 0.167
 	value = out_data['Na-NADH-ubiquinone oxidoreductase']
 	out_data['Na-NADH-ubiquinone oxidoreductase'] = float("%.2f" % (value))
-	
+
 	return out_data
 
 def photosynthesis(ko_match):
@@ -1170,7 +1170,7 @@ def cplyase(ko_match):
 #C-P lyase PhnJ
 	if 'K06163' in ko_match:
 		out_data['C-P lyase cleavage PhnJ'] = 1
-#Tetradimer complex PhnJ, PhnG, PhnH, PhnI 
+#Tetradimer complex PhnJ, PhnG, PhnH, PhnI
 	complex_ = ['K06163', 'K06164', 'K06165', 'K06166']
 	for i in complex_:
 		if i in ko_match:
@@ -1293,9 +1293,9 @@ def metal_transport(ko_match):
 	return out_data
 
 def amino_acids(ko_match):
-	out_data = {'histidine':0, 'arginine':0, 'lysine':0, 'serine':0, 
+	out_data = {'histidine':0, 'arginine':0, 'lysine':0, 'serine':0,
 	'threonine':0, 'asparagine': 0, 'glutamine': 0, 'cysteine':0,
-	'glycine':0, 'proline':0, 'alanine':0, 'valine':0, 
+	'glycine':0, 'proline':0, 'alanine':0, 'valine':0,
 	'methionine':0, 'phenylalanine': 0, 'isoleucine': 0, 'leucine':0,
 	'tryptophan':0, 'tyrosine': 0, 'aspartate': 0, 'glutamate':0}
 	# histidine
@@ -1451,7 +1451,7 @@ def phosphate_storage(ko_match):
 
 def carotenoids(ko_match):
 	out_data = {'carotenoids backbone biosynthesis':0, 'end-product astaxanthin':0,
-	'end-product nostoxanthin':0, 'end-product zeaxanthin diglucoside':0, 
+	'end-product nostoxanthin':0, 'end-product zeaxanthin diglucoside':0,
 	'end-product myxoxanthophylls': 0, 'staphyloaxanthin biosynthesis':0,
 	'mevalonate pathway': 0, 'MEP-DOXP pathway':0}
 
@@ -1495,31 +1495,36 @@ def beta_agarase(ko_match):
 		out_data['beta-agarase'] += 1
 	return out_data
 def beta_porphyranase(ko_match):
-	out_data = {'beta-porphyranase':0}
+	out_data = {'beta-porphyranases':0}
 	if 'K20830' in ko_match:
-		out_data['beta-porphyranase'] += 1
+		out_data['beta-porphyranases'] += 1
 	return out_data
 def glycosidases(ko_match):
-	out_data = {'glycosidases':0}
+	out_data = {'glycosidases': 0}
 	glycosidases = ['K01209', 'K06113', 'K01190', 'K15532', 'K01206', 'K20830', 'K12111']
 	for i in glycosidases:
 		if i in ko_match:
 			out_data['glycosidases'] += 0.142
 	return out_data
 def SusC_like_proteins(ko_match):
-	out_data = {'susc': 0}
+	out_data = {'SusC-like-proteins': 0}
 	if 'K21572' in ko_match:
-		out_data['susc'] += 1
+		out_data['SusC-like-proteins'] += 1
 	return out_data
 def SusD_like_proteins(ko_match):
-	out_data = {'susd': 0}
+	out_data = {'SusD-like-proteins': 0}
 	if 'K21573' in ko_match:
-		out_data['susd'] += 1
+		out_data['SusD-like-proteins'] += 1
 	return out_data
 def sulfatase(ko_match):
-	out_data = {'sulfatase':0}
+	out_data = {'Sulfatase':0}
 	if 'K01206' in ko_match:
-		out_data['sulfatase'] += 1
+		out_data['Sulfatase'] += 1
+	return out_data
+def HCTS(ko_match):
+	out_data = {'HTCS-sensor/regulator':0}
+	if 'K19694' in ko_match:
+		out_data['HTCS-sensor/regulator'] += 1
 	return out_data
 def RteA(ko_match):
 	out_data = {'RteA':0}
@@ -1535,13 +1540,14 @@ def RteB(ko_match):
 	return out_data
 
 def default_viz(genome_df, outfile_name):
+	# print(genome_df)
 	import seaborn as sns
 	import matplotlib.pyplot as plt
-	sns.set(font_scale=1.2)
+	sns.set(font_scale=14)
 	sns.set_style({"savefig.dpi": 200})
-	ax = sns.heatmap(genome_df, cmap=plt.cm.YlOrRd, linewidths=2,
-		linecolor='k', square=True, xticklabels=True,
-		yticklabels=True, cbar_kws={"shrink": 0.1})
+	ax = sns.heatmap(genome_df, cmap=plt.cm.RdPu, linewidths=2,
+		linecolor='k', square=True, xticklabels=True, annot=True,
+		annot_kws={"fontsize":56}, yticklabels=True, cbar_kws={"shrink": 0.25})
 	ax.xaxis.tick_top()
 	#ax.set_yticklabels(ax.get_yticklabels(), rotation=90)
 	plt.xticks(rotation=90)
@@ -1584,97 +1590,16 @@ def main():
 		line = line.rstrip()
 		info = line.split()
 		if len(info) > 1:
-			if info[0].split("_")[0] in genome_data.keys():
-				genome_data[info[0].split("_")[0]].append(info[1])
+			if info[0].split("-")[0] in genome_data.keys():
+				genome_data[info[0].split("-")[0]].append(info[1])
 			else:
-				genome_data[info[0].split("_")[0]] = [info[1]]
-
-	function_order1 = ['beta-agarase', 'beta-porphyranases', 'glycosidases', 'SusC-like-proteins', 'SusD-like-proteins', 'Sulfatase', 'HTCS-sensor/regulator', 'RteA', 'RteB']
-
-	function_order = ['glycolysis', 'gluconeogenesis', 'TCA Cycle',
-	'NAD(P)H-quinone oxidoreductase', 'NADH-quinone oxidoreductase',
-	'Na-NADH-ubiquinone oxidoreductase',
-	'F-type ATPase', 'V-type ATPase', 'Cytochrome c oxidase',
-	'Ubiquinol-cytochrome c reductase', 'Cytochrome o ubiquinol oxidase',
-	'Cytochrome aa3-600 menaquinol oxidase',
-	'Cytochrome c oxidase, cbb3-type', 'Cytochrome bd complex', 'RuBisCo',
-	'CBB Cycle', 'rTCA Cycle', 'Wood-Ljungdahl',
-	'3-Hydroxypropionate Bicycle', '4-Hydroxybutyrate/3-hydroxypropionate',
-	'pectinesterase', 'diacetylchitobiose deacetylase', 'glucoamylase',
-	'D-galacturonate epimerase', 'exo-poly-alpha-galacturonosidase',
-	'oligogalacturonide lyase', 'cellulase', 'exopolygalacturonase',
-	'chitinase', 'basic endochitinase B', 'bifunctional chitinase/lysozyme',
-	'beta-N-acetylhexosaminidase', 'D-galacturonate isomerase',
-	'alpha-amylase', 'beta-glucosidase', 'pullulanase',
-	'ammonia oxidation (amo/pmmo)', 'hydroxylamine oxidation', 'nitrite oxidation',
-	'dissim nitrate reduction', 'DNRA', 'nitrite reduction',
-	'nitric oxide reduction', 'nitrous-oxide reduction',
-	'nitrogen fixation', 'hydrazine dehydrogenase', 'hydrazine synthase',
-	'dissimilatory sulfate < > APS',
-	'dissimilatory sulfite < > APS', 'dissimilatory sulfite < > sulfide',
-	'thiosulfate oxidation', 'alt thiosulfate oxidation tsdA',
-	'alt thiosulfate oxidation doxAD', 'sulfur reductase sreABC',
-	'thiosulfate/polysulfide reductase', 'sulfhydrogenase',
-	'sulfur disproportionation', 'sulfur dioxygenase',
-	'sulfite dehydrogenase', 'sulfite dehydrogenase (quinone)',
-	'sulfide oxidation', 'sulfur assimilation',
-	'DMSP demethylation', 'DMS dehydrogenase', 'DMSO reductase',
-	'NiFe hydrogenase', 'ferredoxin hydrogenase',
-	'membrane-bound hydrogenase', 'hydrogen:quinone oxidoreductase', 'NAD-reducing hydrogenase',
-	'NADP-reducing hydrogenase', 'NiFe hydrogenase Hyd-1',
-	'thiamin biosynthesis',
-	'riboflavin biosynthesis' ,
-	'cobalamin biosynthesis', 'transporter: vitamin B12',
-	'transporter: thiamin', 'transporter: urea',
-	'transporter: phosphonate', 'transporter: phosphate',
-	'Flagellum', 'Chemotaxis', 'Methanogenesis via methanol',
-	'Methanogenesis via acetate',
-	'Methanogenesis via dimethylsulfide, methanethiol, methylpropanoate',
-	'Methanogenesis via methylamine', 'Methanogenesis via trimethylamine',
-	'Methanogenesis via dimethylamine', 'Methanogenesis via CO2',
-	'Coenzyme B/Coenzyme M regeneration',
-	'Coenzyme M reduction to methane', 'Soluble methane monooxygenase',
-	'methanol dehydrogenase', 'alcohol oxidase',
-	'dimethylamine/trimethylamine dehydrogenase',
-	'Photosystem II', 'Photosystem I', 'Cytochrome b6/f complex',
-	'anoxygenic type-II reaction center', 'anoxygenic type-I reaction center',
-	'Retinal biosynthesis', 'Retinal from apo-carotenals',
-	'Entner-Doudoroff Pathway', 'Mixed acid: Lactate', 'Mixed acid: Formate',
-	'Mixed acid: Formate to CO2 & H2', 'Mixed acid: Acetate',
-	'Mixed acid: Ethanol, Acetate to Acetylaldehyde',
-	'Mixed acid: Ethanol, Acetyl-CoA to Acetylaldehyde (reversible)',
-	'Mixed acid: Ethanol, Acetylaldehyde to Ethanol',
-	'Mixed acid: PEP to Succinate via OAA, malate & fumarate',
-	'Naphthalene degradation to salicylate',
-	'Biofilm PGA Synthesis protein',
-	'Colanic acid and Biofilm transcriptional regulator',
-	'Biofilm regulator BssS', 'Colanic acid and Biofilm protein A',
-	'Curli fimbriae biosynthesis', 'Adhesion', 'Competence-related core components',
-	'Competence-related related components', 'Competence factors',
-	'Glyoxylate shunt', 'Anaplerotic genes', 'Sulfolipid biosynthesis',
-	'C-P lyase cleavage PhnJ', 'CP-lyase complex', 'CP-lyase operon', 'Type I Secretion',
-	'Type III Secretion', 'Type II Secretion', 'Type IV Secretion', 'Type VI Secretion',
-	'Sec-SRP', 'Twin Arginine Targeting', 'Type Vabc Secretion',
-	'Serine pathway/formaldehyde assimilation', 'Arsenic reduction',
-	'Cobalt transporter CbiMQ', 'Cobalt transporter CbtA',
-	'Cobalt transporter CorA', 'Nickel ABC-type substrate-binding NikA',
-	'Copper transporter CopA', 'Ferrous iron transporter FeoB',
-	'Ferric iron ABC-type substrate-binding AfuA',
-	'Fe-Mn transporter MntH', 'histidine', 'arginine', 'lysine', 'serine', 
-	'threonine', 'asparagine', 'glutamine', 'cysteine',
-	'glycine', 'proline', 'alanine', 'valine', 
-	'methionine', 'phenylalanine', 'isoleucine', 'leucine',
-	'tryptophan', 'tyrosine', 'aspartate', 'glutamate', 'PET degradation',
-	'starch/glycogen synthesis', 'starch/glycogen degradation', 'polyhydroxybutyrate synthesis',
-	'bidirectional polyphosphate', 'carotenoids backbone biosynthesis', 
-	'end-product astaxanthin', 'end-product nostoxanthin', 'end-product zeaxanthin diglucoside', 
-	'end-product myxoxanthophylls', 'staphyloaxanthin biosynthesis',
-	'mevalonate pathway', 'MEP-DOXP pathway']
+				genome_data[info[0].split("-")[0]] = [info[1]]
+	function_order = ['beta-agarase', 'beta-porphyranases', 'glycosidases', 'SusC-like-proteins', 'SusD-like-proteins', 'Sulfatase', 'HTCS-sensor/regulator', 'RteA', 'RteB']
 
 
 	filehandle = str(arg_dict['output'])
 	out_file = open(filehandle, "w")
-	out_file.write('Function'+"\t"+str("\t".join(function_order1))+"\n")
+	out_file.write('Function'+"\t"+str("\t".join(function_order))+"\n")
 
 	for k in genome_data:
 		pathway_data = {}
@@ -1684,49 +1609,9 @@ def main():
 		pathway_data.update(SusC_like_proteins(genome_data[k]))
 		pathway_data.update(SusD_like_proteins(genome_data[k]))
 		pathway_data.update(sulfatase(genome_data[k]))
+		pathway_data.update(HCTS(genome_data[k]))
 		pathway_data.update(RteA(genome_data[k]))
 		pathway_data.update(RteB(genome_data[k]))
-	# 	pathway_data.update(nitrogen(genome_data[k]))
-	# 	pathway_data.update(glycolysis(genome_data[k]))
-	# 	pathway_data.update(gluconeogenesis(genome_data[k]))
-	# 	pathway_data.update(tca_cycle(genome_data[k]))
-	# 	pathway_data.update(cbb_cycle(genome_data[k]))
-	# 	pathway_data.update(reverse_tca(genome_data[k]))
-	# 	pathway_data.update(wood_ljungdahl(genome_data[k]))
-	# 	pathway_data.update(three_prop(genome_data[k]))
-	# 	pathway_data.update(four_hydrox(genome_data[k]))
-	# 	pathway_data.update(c_degradation(genome_data[k]))
-	# 	pathway_data.update(chemotaxis(genome_data[k]))
-	# 	pathway_data.update(flagellum(genome_data[k]))
-	# 	pathway_data.update(sulfur(genome_data[k]))
-	# 	pathway_data.update(methanogenesis(genome_data[k]))
-	# 	pathway_data.update(methane_ox(genome_data[k]))
-	# 	pathway_data.update(hydrogen(genome_data[k]))
-	# 	pathway_data.update(transporters(genome_data[k]))
-	# 	pathway_data.update(riboflavin(genome_data[k]))
-	# 	pathway_data.update(thiamin(genome_data[k]))
-	# 	pathway_data.update(oxidative_phoshorylation(genome_data[k]))
-	# #Addendum 2
-	# 	pathway_data.update(photosynthesis(genome_data[k]))
-	# 	pathway_data.update(entnerdoudoroff(genome_data[k]))
-	# 	pathway_data.update(mixedacid(genome_data[k]))
-	# 	pathway_data.update(naphthalene(genome_data[k]))
-	# 	pathway_data.update(biofilm(genome_data[k]))
-	# 	pathway_data.update(cobalamin(genome_data[k]))
-	# 	pathway_data.update(competence(genome_data[k]))
-	# 	pathway_data.update(anaplerotic(genome_data[k]))
-	# 	pathway_data.update(sulfolipid(genome_data[k]))
-	# 	pathway_data.update(cplyase(genome_data[k]))
-	# 	pathway_data.update(secretion(genome_data[k]))
-	# 	pathway_data.update(serine(genome_data[k]))
-	# 	pathway_data.update(arsenic(genome_data[k]))
-	# 	pathway_data.update(metal_transport(genome_data[k]))
-	# 	pathway_data.update(amino_acids(genome_data[k]))
-	# 	pathway_data.update(plastic(genome_data[k]))
-	# 	pathway_data.update(carbon_storage(genome_data[k]))
-	# 	pathway_data.update(phosphate_storage(genome_data[k]))
-	# 	pathway_data.update(carotenoids(genome_data[k]))
-	#    print k, pathway_data
 
 		out_string = str(k)+"\t"
 		out_list = [k]
@@ -1756,9 +1641,10 @@ def main():
 			leaf_order.append(line)
 		genome = genome.reindex(leaf_order)
 
+
 	if arg_dict['vizoption'] == 'static':
-		from .KEGG_clustering import hClust_euclidean
-		#from KEGG_clustering import hClust_euclidean
+		# from .KEGG_clustering import hClust_euclidean
+		from KEGG_clustering import hClust_euclidean
 		if len(genome.index) >= 2 and not rearrange:
 			genome = hClust_euclidean(genome)
 		default_viz(genome, os.path.splitext(filehandle)[0] + ".svg")
